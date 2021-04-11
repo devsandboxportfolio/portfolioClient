@@ -15,7 +15,6 @@ function reducer (state, action) {
 const initState = {projects: [], loading: 0};
 
 const List = (props) => {
-  const {params} = props.match;
   const [state, dispatch] = useReducer(reducer, initState);
   const {projects, loading} = state;
 

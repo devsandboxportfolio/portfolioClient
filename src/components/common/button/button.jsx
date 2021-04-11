@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const Button = (props) => {
 
   const {text, type, onClick, disabled} = props

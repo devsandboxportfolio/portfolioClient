@@ -1,11 +1,8 @@
-import React, {useReducer, useEffect} from 'react';
+import React, {useReducer} from 'react';
 import {postRequest} from '../../api';
 import Project from './project';
 // common
 import Button from '../common/button/button';
-import Input from '../common/input/input';
-import Label from '../common/label/label';
-import Textarea from '../common/textarea/textarea';
 
 function reducer (state, action) {
   switch (action.type) {

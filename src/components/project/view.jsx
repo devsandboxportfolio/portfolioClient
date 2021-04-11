@@ -16,7 +16,6 @@ const initState = {_id: '', name: '', description: '', objectives: {}, createdAt
 const View = (props) => {
   const {params} = props.match;
   const [state, dispatch] = useReducer(reducer, initState);
-  const {_id, name, description, objectives, createdAt, updatedAt} = state;
 
   useEffect(
     () => {

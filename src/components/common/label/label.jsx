@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const Label = (props) => {
   const {children, label, placement} = props
 

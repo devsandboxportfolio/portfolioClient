@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const Textarea = (props) => {
   const {name, onChange, value, width, height, disabled} = props
   const style = {boxSizing: 'border-box', resize: 'none', width: width, height: height};

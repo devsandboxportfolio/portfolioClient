@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const Input = (props) => {
   const {type, name, onChange, value, disabled, width, height} = props
   const style = {boxSizing: 'border-box', width: width, height: height};

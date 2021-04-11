@@ -86,9 +86,7 @@ const Project = (props) => {
 
   var objectivesList = renderObjectives();
 
-  useEffect(() => {
-    objectivesList = renderObjectives();
-  }, [objectives]);
+
   return (
     <>
       <Label label="name">
