@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '../common/button/button';
 import Input from '../common/input/input';
 import Label from '../common/label/label';
@@ -83,9 +83,6 @@ const Project = (props) => {
     
     return objectivesList;
   }
-
-  var objectivesList = renderObjectives();
-
 
   return (
     <>
