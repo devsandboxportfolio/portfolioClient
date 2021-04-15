@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <rewrite>
-            <rules>
-                <rule name="Article-Redirect" stopProcessing="true">
-                    <match url="article" />
-                    <action type="Rewrite" url="/" />
-                </rule>
-            </rules>
-        </rewrite>
-    </system.webServer>
-</configuration>
+{
+    "navigationFallback": {
+        "rewrite": "index.html",
+        "exclude": ["/static/images/*.{png,jpg,gif}", "/static/css/*"]
+    },
+    "mimeTypes": {
+        ".json": "text/json"
+    }
+}
