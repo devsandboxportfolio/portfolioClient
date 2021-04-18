@@ -1,5 +1,5 @@
 import React, {useReducer, useEffect} from 'react';
-import {getRequest, deleteRequest} from '../../api';
+import {getRequest, deleteRequest, API_URL} from '../../api';
 
 function reducer (state, action) {
   switch (action.type) {
@@ -20,7 +20,7 @@ const List = (props) => {
 
   useEffect(
     () => {
-      getRequest('http://localhost:5000/project', (data) => {
+      getRequest(API_URL + '/project', (data) => {
         if (data) {
           dispatch({type: 'UPDATE_ALL', payload: {loading: 1, projects: data}});
         }
@@ -63,7 +63,7 @@ const List = (props) => {
     const index = event.target.getAttribute('index');
     
     if (projects[index]) {
-      deleteRequest("http://localhost:5000/project/" + projects[index]._id, (data) => {
+      deleteRequest(API_URL + "/project/" + projects[index]._id, (data) => {
         console.log(data);
         if (data) {
           const newProjects = state.projects;

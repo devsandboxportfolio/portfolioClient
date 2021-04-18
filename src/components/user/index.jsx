@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { getRequest, deleteRequest } from '../../api';
+import { getRequest, deleteRequest, API_URL } from '../../api';
 import Loading from '../common/loading/loading';
 import User from '../user/user';
 import UserForm from '../user/form';
@@ -9,7 +9,7 @@ const UserList = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getRequest('http://localhost:5000/user/', (data) => {
+    getRequest(API_URL + '/user/', (data) => {
       console.log(data);
       setUsers(data);
       setLoading(false);
@@ -17,7 +17,7 @@ const UserList = (props) => {
   }, []);
 
   const deleteUser= (userId) => {
-    deleteRequest('http://localhost:5000/user/' + userId, (data) => {
+    deleteRequest(API_URL + '/user/' + userId, (data) => {
       setUsers(data);
     });
   }

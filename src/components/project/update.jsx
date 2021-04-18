@@ -1,5 +1,5 @@
 import React, {useReducer, useEffect} from 'react';
-import {getRequest, patchRequest} from '../../api';
+import {getRequest, patchRequest, API_URL} from '../../api';
 import Project from './project';
 // common
 import Button from '../common/button/button';
@@ -21,7 +21,7 @@ const Update = (props) => {
 
   const save = () => {
     if (state._id) {
-      patchRequest("http://localhost:5000/project/" + state._id, state, (data) => {console.log(data);});
+      patchRequest(API_URL + "/project/" + state._id, state, (data) => {console.log(data);});
     }
   }
 
@@ -30,7 +30,7 @@ const Update = (props) => {
       if (! params.projectId) {
         return;
       }
-      getRequest('http://localhost:5000/project/_id/' + params.projectId, (data) => {
+      getRequest(API_URL + '/project/_id/' + params.projectId, (data) => {
         if (data._id && data._id === params.projectId) {
           dispatch({type: 'UPDATE_ALL', payload: data});
         }

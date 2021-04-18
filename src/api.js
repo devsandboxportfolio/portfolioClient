@@ -44,4 +44,6 @@ const deleteRequest = async (url, callback) => {
   request('DELETE', url, {}, callback)
 };
 
-export {getRequest, postRequest, putRequest, patchRequest, deleteRequest};
+const API_URL = "https://devsandboxportfolio.azurewebsites.net";
+
+export {getRequest, postRequest, putRequest, patchRequest, deleteRequest, API_URL};

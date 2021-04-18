@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import {postRequest} from '../../api';
+import {postRequest, API_URL} from '../../api';
 import Project from './project';
 // common
 import Button from '../common/button/button';
@@ -19,10 +19,10 @@ const Create = (props) => {
   const [state, dispatch] = useReducer(reducer, initState);
 
   const save = () => {
-    postRequest('http://localhost:5000/project/', state, (data) => {
+    postRequest(API_URL + '/project/', state, (data) => {
       console.log(data);
       if (data && data._id) {
-        window.location.replace("http://localhost:3000/project/view/" + data._id);
+        window.location.replace("/project/view/" + data._id);
       }
     });
   };
