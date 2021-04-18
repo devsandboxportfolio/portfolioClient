@@ -8,18 +8,18 @@ import CreateArticle from './createArticle';
 const Articles = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const articlesEndpoint = process.env.REACT_APP_API_URL + '/article';
+  var articlesEndpoint = process.env.REACT_APP_API_URL + '/article/';
 
   // Load articles from backend
   useEffect(() => {
-    getRequest(process.env.REACT_APP_API_URL + '/article', (data) => {
+    getRequest(articlesEndpoint, (data) => {
       setArticles(data);
       setLoading(false);
     });
   }, []);
 
   const createArticle = (body, callback) => {
-    postRequest(process.env.REACT_APP_API_URL + '/article', body, (data) => {
+    postRequest(articlesEndpoint, body, (data) => {
       setArticles(data);
       if(callback) {
         callback();
@@ -28,7 +28,7 @@ const Articles = (props) => {
   }
 
   const editArticle = (articleId, body, callback) => {
-    putRequest(process.env.REACT_APP_API_URL + '/article/' + articleId, body, (data) => {
+    putRequest(articlesEndpoint + articleId, body, (data) => {
       setArticles(data);
       if(callback) {
         callback();
@@ -37,7 +37,7 @@ const Articles = (props) => {
   }
 
   const deleteArticle = (articleId) => {
-    deleteRequest(process.env.REACT_APP_API_URL + '/article/' + articleId, (data) => {
+    deleteRequest(articlesEndpoint + articleId, (data) => {
       setArticles(data);
     });
   }
