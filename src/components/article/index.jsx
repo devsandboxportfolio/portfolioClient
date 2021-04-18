@@ -8,7 +8,7 @@ import CreateArticle from './createArticle';
 const Articles = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const articlesEndpoint = 'http://localhost:5000/article';
+  const articlesEndpoint = process.env.API_URL + '/article';
 
   // Load articles from backend
   useEffect(() => {
