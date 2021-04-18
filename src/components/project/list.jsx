@@ -16,7 +16,7 @@ const initState = {projects: []};
 
 const List = (props) => {
   const [state, dispatch] = useReducer(reducer, initState);
-  const {projects, loading} = state;
+  const {projects} = state;
 
   useEffect(
     () => {
