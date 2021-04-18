@@ -1,5 +1,5 @@
 import React, {useReducer, useEffect} from 'react';
-import {getRequest, API_URL} from '../../api';
+import { getRequest } from '../../api';
 import Project from './project';
 
 function reducer (state, action) {
@@ -22,7 +22,7 @@ const View = (props) => {
       if (! params.projectId) {
         return;
       }
-      getRequest(API_URL + '/project/_id/' + params.projectId, (data) => {
+      getRequest(process.env.REACT_APP_API_URL + '/project/_id/' + params.projectId, (data) => {
         if (data._id && data._id === params.projectId) {
           dispatch({type: 'UPDATE_ALL', payload: data});
         }

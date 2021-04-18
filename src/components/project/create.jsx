@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import {postRequest, API_URL} from '../../api';
+import { postRequest } from '../../api';
 import Project from './project';
 // common
 import Button from '../common/button/button';
@@ -19,7 +19,7 @@ const Create = (props) => {
   const [state, dispatch] = useReducer(reducer, initState);
 
   const save = () => {
-    postRequest(API_URL + '/project/', state, (data) => {
+    postRequest(process.env.REACT_APP_API_URL + '/project/', state, (data) => {
       console.log(data);
       if (data && data._id) {
         window.location.replace("/project/view/" + data._id);

@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { postRequest, API_URL } from '../../api';
+import { postRequest } from '../../api';
 import Label from '../common/label/label';
 import Input from '../common/input/input';
 import Button from '../common/button/button';
@@ -24,7 +24,7 @@ const UserForm = (props) => {
     e.preventDefault(); 
     console.log(userInfo);
     // ajax
-    postRequest(API_URL + '/user/create', userInfo, (data) => {
+    postRequest(process.env.REACT_APP_API_URL + '/user/create', userInfo, (data) => {
       console.log(data);
       window.location.reload();
     });
