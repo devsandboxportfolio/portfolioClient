@@ -12,7 +12,7 @@ function reducer (state, action) {
   }
 };
 
-const initState = {projects: [], loading: 0};
+const initState = {projects: []};
 
 const List = (props) => {
   const [state, dispatch] = useReducer(reducer, initState);
@@ -22,11 +22,11 @@ const List = (props) => {
     () => {
       getRequest(process.env.REACT_APP_API_URL + '/project', (data) => {
         if (data) {
-          dispatch({type: 'UPDATE_ALL', payload: {loading: 1, projects: data}});
+          dispatch({type: 'UPDATE_ALL', payload: {projects: data}});
         }
       });
     },
-    [loading]
+    []
   );
 
   const redirect = (event) => {
