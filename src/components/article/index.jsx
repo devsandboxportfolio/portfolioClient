@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRequest, putRequest, postRequest, deleteRequest, API_URL } from '../../api';
+import { getRequest, putRequest, postRequest, deleteRequest, REACT_APP_API_URL } from '../../api';
 
 import Loading from '../common/loading/loading';
 import Article from './article';
@@ -8,7 +8,7 @@ import CreateArticle from './createArticle';
 const Articles = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const articlesEndpoint = API_URL + '/article';
+  const articlesEndpoint = REACT_APP_API_URL + '/article';
 
   // Load articles from backend
   useEffect(() => {
