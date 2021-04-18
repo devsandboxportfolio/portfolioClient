@@ -8,7 +8,7 @@ import CreateArticle from './createArticle';
 const Articles = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const articlesEndpoint = process.env.API_URL + '/article';
+  const articlesEndpoint = 'https://devsandboxportfolio.azurewebsites.net' + '/article';
 
   // Load articles from backend
   useEffect(() => {
