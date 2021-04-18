@@ -28,7 +28,7 @@ const Articles = (props) => {
   }
 
   const editArticle = (articleId, body, callback) => {
-    putRequest(process.env.REACT_APP_API_URL + '/article' + '/' + articleId, body, (data) => {
+    putRequest(process.env.REACT_APP_API_URL + '/article/' + articleId, body, (data) => {
       setArticles(data);
       if(callback) {
         callback();
@@ -37,7 +37,7 @@ const Articles = (props) => {
   }
 
   const deleteArticle = (articleId) => {
-    deleteRequest(process.env.REACT_APP_API_URL + '/article' + '/' + articleId, (data) => {
+    deleteRequest(process.env.REACT_APP_API_URL + '/article/' + articleId, (data) => {
       setArticles(data);
     });
   }
