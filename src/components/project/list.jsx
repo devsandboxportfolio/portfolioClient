@@ -33,7 +33,7 @@ const List = (props) => {
     const action = event.target.getAttribute('action');
     const index  = event.target.getAttribute('index');
     
-    var url = "http://localhost:3000/project/";
+    var url = "/project/";
     switch (action) {
       case "create":
         url += "create";
