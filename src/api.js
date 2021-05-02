@@ -1,10 +1,43 @@
 import axios from 'axios';
 
+let jwtAccessToken = '';
+let jwtRefreshToken;
+let jwtAccessTokenExpiresAt;
+
+const login = () => {
+  const setJwtVariables = (response) => {
+    if (response.status === 200) {
+      jwtAccessToken = reponse.accessToken;
+      jwtRefreshToken = response.refreshToken;
+      jwtAccessTokenExpiresAt = response.expiresAt;
+    }
+  }
+  let body = {
+    "email": "huyqtran851@gmail.com",
+    "password": "hello123"
+  }
+  request('POST', process.env.AUTH_SERVICE_URL + "/user/login", body, setJwtVariables)
+};
+
+const getAccessToken = () => {
+  const setJwtVariables = (response) => {
+    if (response.status === 200) {
+      jwtAccessToken = reponse.accessToken;
+      jwtAccessTokenExpiresAt = response.expiresAt;
+    }
+  }
+  request('POST', process.env.AUTH_SERVICE_URL + "/user/getAccessToken", {refreshToken : jwtRefreshToken}, setJwtVariables)
+};
+
 const request = (method, url, body = {}, callback) => {
+  if (jwtAccessTokenExpiresAt && new Date().getTime() > jwtAccessTokenExpiresAt) {
+    getAccessToken()
+  }
   let parameters = {
     method: method,
     url: url,
     headers: {
+        Authorization: `Bearer ${jwtAccessToken}`,
         "Content-Type": "application/json"
     },
   }
@@ -44,4 +77,4 @@ const deleteRequest = async (url, callback) => {
   request('DELETE', url, {}, callback)
 };
 
-export {getRequest, postRequest, putRequest, patchRequest, deleteRequest};
+export {getRequest, postRequest, putRequest, patchRequest, deleteRequest, login};
