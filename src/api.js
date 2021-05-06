@@ -1,10 +1,41 @@
 import axios from 'axios';
 
+let jwtAccessToken = '';
+let jwtRefreshToken;
+let jwtAccessTokenExpiresAt;
+let auth_service_url = 'https://devsandboxportfolioauth.azurewebsites.net';
+
+const login = (body) => {
+  const setJwtVariables = (response) => {
+    if (response.status === 200) {
+      jwtAccessToken = response.accessToken;
+      jwtRefreshToken = response.refreshToken;
+      jwtAccessTokenExpiresAt = response.expiresAt;
+    }
+  }
+
+  request('POST', auth_service_url + "/user/login", body, setJwtVariables)
+};
+
+const getAccessToken = () => {
+  const setJwtVariables = (response) => {
+    if (response.status === 200) {
+      jwtAccessToken = response.accessToken;
+      jwtAccessTokenExpiresAt = response.expiresAt;
+    }
+  }
+  request('POST', auth_service_url + "/user/getAccessToken", {refreshToken : jwtRefreshToken}, setJwtVariables)
+};
+
 const request = (method, url, body = {}, callback) => {
+  if (jwtAccessTokenExpiresAt && new Date().getTime() > jwtAccessTokenExpiresAt) {
+    getAccessToken()
+  }
   let parameters = {
     method: method,
     url: url,
     headers: {
+        Authorization: `Bearer ${jwtAccessToken}`,
         "Content-Type": "application/json"
     },
   }
@@ -44,4 +75,4 @@ const deleteRequest = async (url, callback) => {
   request('DELETE', url, {}, callback)
 };
 
-export {getRequest, postRequest, putRequest, patchRequest, deleteRequest};
+export {getRequest, postRequest, putRequest, patchRequest, deleteRequest, login};
