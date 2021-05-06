@@ -11,7 +11,16 @@ const NavBar = (props) => {
           <a href="/aboutUs">About Us</a>
         </li>
         <li>
+          <a href="/login">Login</a>
+        </li>
+        <li>
+          <a href="/article">Articles</a>
+        </li>
+        <li>
           <a href="/project/list">Projects</a>
+        </li>
+        <li>
+          <a href="/user">Users</a>
         </li>
       </ul>
     </nav>

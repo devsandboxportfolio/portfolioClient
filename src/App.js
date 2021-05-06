@@ -7,6 +7,7 @@ import AboutUs  from './components/aboutUs/index'
 import Articles from './components/article/index'
 import Project  from './components/project/index'
 import User    from './components/user/index'
+import Login   from './components/user/login'
 
 const App = () => {
   //;
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/user"    component={User} />
           <Route path="/article" component={Articles} />
           <Route path="/project" component={Project} />
+          <Route path="/login" exact component={Login} />
         </Layout>
       </Router>
     </>

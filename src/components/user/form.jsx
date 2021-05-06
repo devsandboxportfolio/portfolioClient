@@ -1,5 +1,5 @@
 import React, {useReducer} from 'react';
-import { postRequest, login } from '../../api';
+import { postRequest } from '../../api';
 import Label from '../common/label/label';
 import Input from '../common/input/input';
 import Button from '../common/button/button';
@@ -50,7 +50,6 @@ const UserForm = (props) => {
         </Label>
       </div>
       <Button type="submit" text="Create"/>
-      <Button text="Login" onClick={login} />
     </form>
   )
 }
