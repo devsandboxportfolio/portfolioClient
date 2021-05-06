@@ -16,7 +16,7 @@ const login = () => {
     "email": "huyqtran851@gmail.com",
     "password": "hello123"
   }
-  request('POST', "https://devsandboxportfolioauth.azurewebsites.net/user/login", body, setJwtVariables)
+  request('POST', process.env.AUTH_SERVICE_URL + "/user/login", body, setJwtVariables)
 };
 
 const getAccessToken = () => {
@@ -26,7 +26,7 @@ const getAccessToken = () => {
       jwtAccessTokenExpiresAt = response.expiresAt;
     }
   }
-  request('POST', "https://devsandboxportfolioauth.azurewebsites.net/user/getAccessToken", {refreshToken : jwtRefreshToken}, setJwtVariables)
+  request('POST', process.env.AUTH_SERVICE_URL + "/user/getAccessToken", {refreshToken : jwtRefreshToken}, setJwtVariables)
 };
 
 const request = (method, url, body = {}, callback) => {
