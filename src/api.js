@@ -3,8 +3,9 @@ import axios from 'axios';
 let jwtAccessToken = '';
 let jwtRefreshToken;
 let jwtAccessTokenExpiresAt;
+let auth_service_url = 'https://devsandboxportfolioauth.azurewebsites.net';
 
-const login = () => {
+const login = (body) => {
   const setJwtVariables = (response) => {
     if (response.status === 200) {
       jwtAccessToken = response.accessToken;
@@ -12,11 +13,8 @@ const login = () => {
       jwtAccessTokenExpiresAt = response.expiresAt;
     }
   }
-  let body = {
-    "email": "huyqtran851@gmail.com",
-    "password": "hello123"
-  }
-  request('POST', process.env.AUTH_SERVICE_URL + "/user/login", body, setJwtVariables)
+
+  request('POST', auth_service_url + "/user/login", body, setJwtVariables)
 };
 
 const getAccessToken = () => {
@@ -26,7 +24,7 @@ const getAccessToken = () => {
       jwtAccessTokenExpiresAt = response.expiresAt;
     }
   }
-  request('POST', process.env.AUTH_SERVICE_URL + "/user/getAccessToken", {refreshToken : jwtRefreshToken}, setJwtVariables)
+  request('POST', auth_service_url + "/user/getAccessToken", {refreshToken : jwtRefreshToken}, setJwtVariables)
 };
 
 const request = (method, url, body = {}, callback) => {
